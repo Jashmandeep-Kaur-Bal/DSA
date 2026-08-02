@@ -1,41 +1,40 @@
 class MyQueue {
 public:
-        stack<int> inStack, outStack;
-
+    stack<int> inStack, outStack;
     MyQueue() {
+        
     }
-
-    void transfer() {
-        while (!inStack.empty()) {
-            outStack.push(inStack.top());
-            inStack.pop();
+    void transfer(){
+            while(!inStack.empty()){
+                outStack.push(inStack.top());
+                inStack.pop();
+            }
         }
-    }
-
+    
     void push(int x) {
-        inStack.push(x);
+        inStack.push(x);   
     }
-
+    
     int pop() {
-        if (outStack.empty()) {
+        if(outStack.empty()){
             transfer();
         }
-
-        int front = outStack.top();
+        int val=outStack.top();
         outStack.pop();
-        return front;
+        return val;
     }
-
+    
     int peek() {
-        if (outStack.empty()) {
+        if(outStack.empty()){
             transfer();
         }
-
-        return outStack.top();
+         return outStack.top();
+        
     }
-
+    
     bool empty() {
         return inStack.empty() && outStack.empty();
+        
     }
 };
 
